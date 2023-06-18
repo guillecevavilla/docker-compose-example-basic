@@ -1,0 +1,17 @@
+Copy code
+FROM python:3.10.0
+
+WORKDIR /app
+
+# Instala las dependencias de Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia el código fuente de la aplicación
+COPY . .
+
+# Expone el puerto 5000 para acceder a la aplicación
+EXPOSE 5000
+
+# Comando para iniciar la aplicación Python
+CMD ["python", "app.py"]
