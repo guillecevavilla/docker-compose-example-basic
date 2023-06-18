@@ -1,0 +1,30 @@
+version: '3'
+services:
+  react-app:
+    build:
+      context: ./react-app
+      dockerfile: Dockerfile.react
+    ports:
+      - "3000:3000"
+    volumes:
+      - react-data:/app/data
+    networks:
+      - my-network
+
+  python-app:
+    build:
+      context: ./python-app
+      dockerfile: Dockerfile.python
+    ports:
+      - "5000:5000"
+    volumes:
+      - python-data:/app/data
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  react-data:
+  python-data:
